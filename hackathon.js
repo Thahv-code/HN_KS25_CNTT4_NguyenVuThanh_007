@@ -74,3 +74,8 @@ function searchFood(name, type) {
   return `Đã cập nhật món ăn: ${name}`
 }
 
+function sortFoodType(type) {
+    if (menuFood.some((food) => food.type === type)) {
+      console.log(type)
+    }
+}
