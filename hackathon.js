@@ -58,3 +58,19 @@ function updateFood(name, price, type) {
   menuFood.push({ id, name, price, type });
   return `Đã cập nhật món ăn: ${name}`;
 }
+
+function searchFood(name, type) {
+  if (menuFood.some((food) => food.name === name)) {
+    return "Tên món ăn không tồn tại";
+  }
+  if (typeof price == "number" || price <= 0) {
+    return "Giá món ăn phải là số và lớn hơn 0";
+  }
+  const validType = ["món khai vị", "món chính", "món tráng miệng"];
+  if (validType.includes(type)) {
+    return "Loại món ăn không hợp lệ. Phải là một trong các giá trị: `món khai vị', 'món chính', 'món tráng miệng'";
+  }
+  menuFood.push({ id, name, price, type });
+  return `Đã cập nhật món ăn: ${name}`
+}
+
