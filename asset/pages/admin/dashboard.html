@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/asset/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">Admin Dashboard</div>
+        <nav class="menu">
+            <ul>
+                <li class="menu-item active"><a href="/asset/pages/admin/dashboard.html">Quản lý lịch</a></li>
+                <li class="menu-item"><a href="/asset/pages/admin/service.html">Quản lý dịch vụ</a></li>
+                <li class="menu-item"><a href="/asset/pages/home-page.html">Trang chủ</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" onclick="logout(); return false;" class="logout">Đăng xuất</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <h1 class="title">Thống kê lịch tập</h1>
+
+        <section class="stats-grid">
+            <div class="card border-blue">
+                <p class="card-label">Tổng số lịch Gym</p>
+                <p class="card-value color-blue" id="totalGym">0</p>
+            </div>
+            <div class="card border-green">
+                <p class="card-label">Tổng số lịch Yoga</p>
+                <p class="card-value color-green" id="totalYoga">0</p>
+            </div>
+            <div class="card border-purple">
+                <p class="card-label">Tổng số lịch Zumba</p>
+                <p class="card-value color-purple" id="totalZumba">0</p>
+            </div>
+        </section>
+
+        <section class="chart-container">
+            <div class="chart-placeholder">
+                <div id="chart-column-gym"></div>
+                <div id="chart-column-yoga"></div>
+                <div id="chart-column-zumba"></div>
+            </div>
+            <div class="chart-labels">
+                <span>Gym</span>
+                <span>Yoga</span>
+                <span>Zumba</span>
+            </div>
+        </section>
+
+        <section class="filter-box">
+            <h3 class="filter-title">Bộ lọc</h3>
+            <div class="filter-inputs">
+                <div class="form-group">
+                    <label>Lớp học</label>
+                    <select id="filterClass">
+                        <option value="all">Tất cả</option>
+                        <option value="gym">GYM</option>
+                        <option value="yoga">YOGA</option>
+                        <option value="zumba">ZUMBA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" placeholder="Tìm theo email" id="filterEmail">
+                </div>
+                <div class="form-group">
+                    <label>Ngày</label>
+                    <input type="date" id="filterDate">
+                </div>
+            </div>
+        </section>
+
+        <div class="table-wrapper">
+    <table class="booking-table">
+        <thead>
+            <tr>
+                <th>Lớp học</th>
+                <th>Ngày tập</th>
+                <th>Khung giờ</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody id="adminTableBody">
+        </tbody>
+    </table>
+</div>
+    </main>
+    <script src="/asset/js/dashboard.js"></script>
+</body>
+</html>

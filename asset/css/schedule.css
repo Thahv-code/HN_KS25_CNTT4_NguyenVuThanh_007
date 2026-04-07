@@ -1,0 +1,232 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1a202c; /* Màu tối của header */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.nav-links a.active {
+    color: white;
+    font-weight: 500;
+}
+
+/* Container chính */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Header của phần nội dung */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-content h1 {
+    font-size: 24px;
+    color: #111;
+}
+
+/* Nút bấm */
+.btn-add {
+    background-color: #4299e1; /* Màu xanh giống trong ảnh */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #3182ce;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Cho phép cuộn ngang nếu màn hình nhỏ */
+    margin-top: 20px;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse; /* Bỏ khoảng cách giữa các viền ô */
+    text-align: left;
+}
+
+.booking-table thead tr {
+    background-color: #f7fafc;
+    border-bottom: 2px solid #edf2f7;
+}
+
+.booking-table th, 
+.booking-table td {
+    padding: 15px;
+    font-size: 14px;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.booking-table th {
+    font-weight: 600;
+    text-transform: uppercase; /* Cho chữ in hoa nhẹ nhàng */
+    letter-spacing: 0.5px;
+}
+
+/* Hiệu ứng di chuột qua hàng */
+.booking-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Style cho các nút trong cột thao tác */
+.btnEdit {
+    background-color: white;
+    color: rgb(51, 0, 255);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+}
+
+.btnDelete {
+    background-color: white;
+    /* background: #f56565; Màu đỏ */
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btnEdit:hover{
+    background-color:  #72b9ff;
+    transform: scale(1.05);
+    color:white;
+}
+.btnDelete:hover{
+    background-color:  #ff936c;
+    transform: scale(1.05);
+    color:white;
+}
+
+
+/* Lớp phủ đen mờ bao quanh */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Mờ đen */
+    display: none; /* Mặc định ẩn đi */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Khối nội dung trắng ở giữa */
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #4a5568;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    outline: none;
+}
+
+/* Footer nút bấm */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-cancel {
+    background: #718096;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-save {
+    background: #4299e1;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form-group input[type="date"]:focus {
+    border-color: #4299e1; 
+}

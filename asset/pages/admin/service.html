@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Lớp Học</title>
+    <link rel="stylesheet" href="/asset/css/service.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-header">Admin Dashboard</div>
+      <nav class="menu">
+        <ul>
+          <li class="menu-item">
+            <a href="/asset/pages/admin/dashboard.html">Quản lý lịch</a>
+          </li>
+          <li class="menu-item active">
+            <a href="/asset/pages/admin/service.html">Quản lý lớp học</a>
+          </li>
+          <li class="menu-item">
+            <a href="/asset/pages/home-page.html">Trang chủ</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <a
+          href="#"
+          onclick="
+            logout();
+            return false;
+          "
+          class="logout"
+          >Đăng xuất</a
+        >
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="header-content">
+        <h1 class="title">Quản lý Lớp Học</h1>
+        <button class="btn-add" id="btnAddService">Thêm Lớp Học</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="booking-table">
+          <thead>
+            <tr>
+              <th>Tên Lớp Học</th>
+              <th>Thao Tác</th>
+            </tr>
+          </thead>
+          <tbody id="servicesTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Modal Thêm Dịch Vụ -->
+    <div class="modal-overlay" id="serviceModal">
+      <div class="modal-content">
+        <h2 id="serviceModalTitle">Thêm Lớp Học</h2>
+
+        <form id="serviceForm">
+          <div class="form-group">
+            <label>Tên Lớp Học</label>
+            <input
+              type="text"
+              id="serviceNameInput"
+              placeholder="Nhập tên lớp học mới"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="btnCancelService">
+              Hủy
+            </button>
+            <button type="submit" class="btn-save" id="btnSaveService">
+              Lưu
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="/asset/js/service.js"></script>
+  </body>
+</html>

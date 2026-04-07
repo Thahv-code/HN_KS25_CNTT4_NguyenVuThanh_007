@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Schedule</title>
+    <link rel="stylesheet" href="/asset/css/schedule.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">GYM MANAGEMENT</div>
+      <nav class="nav-links" id="navMenu">
+        <!-- Menu sẽ được cập nhật bởi JavaScript -->
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="header-content">
+        <h1>Quản lý lịch tập</h1>
+        <button class="btn-add">Đặt lịch mới</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="booking-table">
+          <thead>
+            <tr>
+              <th>Lớp học</th>
+              <th>Ngày tập</th>
+              <th>Khung giờ</th>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="bookingBody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <div class="modal-overlay" id="modalBooking">
+      <div class="modal-content">
+        <h2 id="title">Đặt lịch mới</h2>
+
+        <form id="bookingForm">
+          <div class="form-group">
+            <label>Lớp học</label>
+            <select id="classSelect">
+              <option value="">Chọn lớp học</option>
+            </select>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Ngày tập</label>
+            <input type="date" id="dateInput" />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Khung giờ</label>
+            <select id="timeSelect">
+              <option value="">Chọn khung giờ</option>
+              <option value="08:00 - 10:00">08:00 - 10:00</option>
+              <option value="14:00 - 16:00">14:00 - 16:00</option>
+              <option value="18:00 - 20:00">18:00 - 20:00</option>
+            </select>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="btnCancel">Hủy</button>
+            <button type="submit" class="btn-save" id="btnSave">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Kiểm tra user role và cập nhật navbar
+      function updateNavigation() {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        const navMenu = document.getElementById("navMenu");
+
+        if (currentUser && currentUser.role === "user") {
+          // Navbar cho user thường
+          navMenu.innerHTML = `
+            <span style="color: white; margin-right: auto;">Xin chào, ${currentUser.fullname}</span>
+            <a href="/asset/pages/home-page.html">Trang chủ</a>
+            <a href="/asset/pages/booking/schedule.html" class="active">Lịch tập</a>
+            <a href="#" onclick="logout(event)">Đăng xuất</a>
+          `;
+        } else if (currentUser && currentUser.role === "admin") {
+          // Navbar cho admin
+          navMenu.innerHTML = `
+            <span style="color: white; margin-right: auto;">Xin chào, ${currentUser.fullname}</span>
+            <a href="/asset/pages/home-page.html">Trang chủ</a>
+            <a href="/asset/pages/admin/admin.html">Quản lý</a>
+            <a href="/asset/pages/booking/schedule.html" class="active">Lịch tập</a>
+            <a href="#" onclick="logout(event)">Đăng xuất</a>
+          `;
+        } else {
+          // Navbar cho khách (chưa đăng nhập)
+          navMenu.innerHTML = `
+            <a href="/asset/pages/home-page.html">Trang chủ</a>
+            <a href="/asset/pages/booking/schedule.html" class="active">Lịch tập</a>
+            <a href="/asset/pages/auth/sign-in.html">Đăng nhập</a>
+          `;
+        }
+      }
+
+      function logout(event) {
+        event.preventDefault();
+        localStorage.removeItem("currentUser");
+        window.location.href = "/asset/pages/home-page.html";
+      }
+
+      // Cập nhật navbar khi trang tải
+      document.addEventListener("DOMContentLoaded", updateNavigation);
+    </script>
+    <script src="/asset/js/schedule.js"></script>
+  </body>
+</html>
