@@ -78,18 +78,14 @@ form.addEventListener("submit", function (e) {
       role: "user",
       id: Date.now().toString(),
     };
-
     let users = JSON.parse(localStorage.getItem("users")) || [];
-
     const exists = users.some((u) => u.email === email);
     if (exists) {
       showError(errorEmail, "Email này đã được đăng ký.");
       return;
     }
-
     users.push(userData);
     localStorage.setItem("users", JSON.stringify(users));
-
     Swal.fire({
       position: "top-end",
       icon: "success",

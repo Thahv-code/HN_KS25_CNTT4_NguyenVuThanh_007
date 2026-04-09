@@ -13,9 +13,9 @@ const title = document.getElementById("title");
 
 let members = JSON.parse(localStorage.getItem("members")) || [];
 let currentId = Number(localStorage.getItem("currentId")) || 1;
+
 let editId = null;
 
-// Load dữ liệu lớp học từ localStorage
 const loadClasses = () => {
   const classes = JSON.parse(localStorage.getItem("classes")) || [];
   classSelect.innerHTML = '<option value="">Chọn lớp học</option>';
@@ -61,7 +61,7 @@ const resetData = () => {
 
 const loadFormLocal = () => {
   const data = JSON.parse(localStorage.getItem("currentUser"));
-  return data ? data : null; // Trả về object user
+  return data ? data : null;
 };
 
 const validateData = () => {
@@ -91,6 +91,7 @@ const validateData = () => {
   } else {
     setSuccess(timeSelect);
   }
+
   if (isValid) {
     const isDuplicate = members.find(
       (m) =>

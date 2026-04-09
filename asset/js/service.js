@@ -7,7 +7,7 @@ const btnSaveService = document.getElementById("btnSaveService");
 const servicesTableBody = document.getElementById("servicesTableBody");
 const serviceModalTitle = document.getElementById("serviceModalTitle");
 
-// Khởi tạo danh sách lớp học mặc định nếu chưa có
+
 let classes = JSON.parse(localStorage.getItem("classes")) || [
   { id: 1, name: "Gym" },
   { id: 2, name: "Yoga" },
@@ -17,12 +17,10 @@ let classes = JSON.parse(localStorage.getItem("classes")) || [
 let currentClassId = Number(localStorage.getItem("currentClassId")) || 4;
 let editClassId = null;
 
-// Lưu dữ liệu mặc định vào localStorage khi lần đầu tiên
 if (!localStorage.getItem("classes")) {
   localStorage.setItem("classes", JSON.stringify(classes));
 }
 
-// Kiểm tra quyền admin
 function checkAdmin() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   if (!currentUser || currentUser.role !== "admin") {
@@ -30,19 +28,16 @@ function checkAdmin() {
   }
 }
 
-// Đăng xuất
 function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "/asset/pages/auth/sign-up.html";
 }
 
-// Lưu dữ liệu vào localStorage
 const saveData = () => {
   localStorage.setItem("classes", JSON.stringify(classes));
   localStorage.setItem("currentClassId", currentClassId);
 };
 
-// Reset form
 const resetForm = () => {
   serviceNameInput.value = "";
   btnSaveService.textContent = "Lưu";
@@ -50,7 +45,7 @@ const resetForm = () => {
   editClassId = null;
 };
 
-// Kiểm tra dữ liệu
+
 const validateService = () => {
   const serviceName = serviceNameInput.value.trim();
 
@@ -64,7 +59,6 @@ const validateService = () => {
     return false;
   }
 
-  // Kiểm tra trùng lặp (ngoại trừ id đang sửa)
   const isDuplicate = classes.find(
     (c) =>
       c.name.toLowerCase() === serviceName.toLowerCase() &&
@@ -84,7 +78,7 @@ const validateService = () => {
   return true;
 };
 
-// Render bảng dịch vụ
+
 const renderServices = () => {
   if (classes.length === 0) {
     servicesTableBody.innerHTML = `
@@ -96,7 +90,6 @@ const renderServices = () => {
     `;
     return;
   }
-
   servicesTableBody.innerHTML = classes
     .map(
       (classItem) => `
@@ -114,7 +107,6 @@ const renderServices = () => {
   attachTableEventListeners();
 };
 
-// Gắn sự kiện cho các nút trong bảng
 const attachTableEventListeners = () => {
   document.querySelectorAll(".btnEdit").forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -157,19 +149,16 @@ const attachTableEventListeners = () => {
   });
 };
 
-// Mở modal thêm dịch vụ
 btnAddService.addEventListener("click", () => {
   resetForm();
   serviceModal.style.display = "flex";
 });
 
-// Đóng modal khi click Hủy
 btnCancelService.addEventListener("click", () => {
   serviceModal.style.display = "none";
   resetForm();
 });
 
-// Đóng modal khi click ngoài khối nội dung
 serviceModal.addEventListener("click", (e) => {
   if (e.target === serviceModal) {
     serviceModal.style.display = "none";
@@ -177,7 +166,6 @@ serviceModal.addEventListener("click", (e) => {
   }
 });
 
-// Lưu dịch vụ
 serviceForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -186,7 +174,6 @@ serviceForm.addEventListener("submit", (e) => {
   const serviceName = serviceNameInput.value.trim();
 
   if (editClassId) {
-    // Cập nhật lớp học
     classes = classes.map((c) =>
       c.id === editClassId ? { ...c, name: serviceName } : c,
     );

@@ -1,11 +1,9 @@
-
 function updateNavigation() {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navMenu = document.getElementById("navMenu");
 
   if (currentUser) {
     if (currentUser.role === "user") {
-      // Navbar user
       navMenu.innerHTML = `
       <span style="color: white; margin-right: auto;">Xin chào, ${currentUser.fullname}</span>
       <a href="/asset/pages/home-page.html">Trang chủ</a>
@@ -13,7 +11,6 @@ function updateNavigation() {
       <a href="#" onclick="logout(event)">Đăng xuất</a>
     `;
     } else if (currentUser.role === "admin") {
-      // Navbar admin
       navMenu.innerHTML = `
       <span style="color: white; margin-right: auto;">Xin chào, ${currentUser.fullname}</span>
       <a href="/asset/pages/home-page.html">Trang chủ</a>
@@ -22,7 +19,6 @@ function updateNavigation() {
     `;
     }
   } else {
-    // Navbar chưa đăng nhập
     navMenu.innerHTML = `
     <a href="/asset/pages/home-page.html">Trang chủ</a>
     <a href="/asset/pages/booking/schedule.html">Lịch tập</a>

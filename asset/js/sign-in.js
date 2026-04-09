@@ -6,30 +6,23 @@ const adminData = {
   email: "admin@gmail.com",
   password: "admin123",
   role: "admin",
-  id:"0"
+  id: "0",
 };
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
-
   errorMsg.textContent = "";
-
   if (email === "") {
     errorMsg.textContent = "Email không được để trống.";
     return;
   }
-
   if (password === "") {
     errorMsg.textContent = "Mật khẩu không được để trống.";
     return;
   }
-
-  // Kiểm tra admin
   if (email === adminData.email && password === adminData.password) {
-    // Lưu thông tin admin vào localStorage
     localStorage.setItem("currentUser", JSON.stringify(adminData));
     window.location.href = "/asset/pages/home-page.html";
     return;
