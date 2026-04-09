@@ -6,7 +6,6 @@ const adminData = {
   email: "admin@gmail.com",
   password: "admin123",
   role: "admin",
-  id: "0",
 };
 
 form.addEventListener("submit", function (e) {
@@ -20,7 +19,7 @@ form.addEventListener("submit", function (e) {
   }
   if (password === "") {
     errorMsg.textContent = "Mật khẩu không được để trống.";
-    return;
+    return; 
   }
   if (email === adminData.email && password === adminData.password) {
     localStorage.setItem("currentUser", JSON.stringify(adminData));
